@@ -1,0 +1,11 @@
+version: '2.20'
+services:
+  homework:
+    image: kubesphere/java-11-centos7:v3.2.0
+    build: .
+    ports:
+      - "6000:6000"
+    environment:
+      - SERVER_PORT= 6000
+      - SPRING_DATASOURCE_URL=jdbc:h2:tcp://localhost/~/logDb
+    restart: always
