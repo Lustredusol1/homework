@@ -1,7 +1,7 @@
 version: '2.20'
 services:
   homework:
-    platform: linux/arm64/v8
+    platform: linux/arm64:8
     image: kubesphere/java-11-centos7:v3.2.0
     build: .
     ports:
@@ -13,8 +13,8 @@ services:
       - db
 
   db:
-    platform: linux/amd64
-    image: oscarfonts/h2:latest
+    platform: linux/arm64:8
+    image: oscarfonts/h2:2.23.2
     build: .
     ports:
       - "6110:81"
