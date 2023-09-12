@@ -1,0 +1,9 @@
+version: '2.20'
+services:
+  homework:
+    build: .
+    ports:
+      - "6000:6000"
+    volumes:
+      - ./logDb:/logDB
+    restart: always
