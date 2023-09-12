@@ -1,9 +1,9 @@
-version: '3'
+version: '2.4'
 services:
-  homework:
+  shiplogs:
     build: .
     ports:
-      - 6000:6000
+      - 6000:8080
     volumes:
       - ./logDb:/logDB
-    restart: always
+    restart: on-failure
