@@ -3,7 +3,12 @@ services:
   shiplogs:
     build: .
     ports:
-      - 6000:8080
+      - 8080:8080
     volumes:
-      - ./logDb:/logDB
-    restart: on-failure
+      - ./data:/data
+      - ./target:/target
+      - ./src:/src
+      - ./scripts:/scripts
+      - ./resources:/resources
+      - ./lib:/lib
+    restart: always
