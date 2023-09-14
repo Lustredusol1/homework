@@ -1078,3 +1078,28 @@ Caused by: java.nio.channels.OverlappingFileLockException
 	at java.base/java.nio.channels.FileChannel.tryLock(FileChannel.java:1348)
 	at org.h2.mvstore.FileStore.open(FileStore.java:154)
 	... 20 more
+2023-09-13 17:47:47 database: close
+org.h2.message.DbException: IO Exception: "Closing" [90028-204]
+	at org.h2.message.DbException.get(DbException.java:216)
+	at org.h2.mvstore.db.Store.close(Store.java:371)
+	at org.h2.engine.Database.closeOpenFilesAndUnlock(Database.java:1281)
+	at org.h2.engine.Database.closeImpl(Database.java:1234)
+	at org.h2.engine.Database.close(Database.java:1144)
+	at org.h2.engine.OnExitDatabaseCloser.onShutdown(OnExitDatabaseCloser.java:85)
+	at org.h2.engine.OnExitDatabaseCloser.run(OnExitDatabaseCloser.java:114)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: IO Exception: "Closing" [90028-204]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:573)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	... 7 more
+Caused by: org.h2.mvstore.MVStoreException: File corrupt reading chunk at position 45056 [2.0.204/6]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.Chunk.readChunkHeader(Chunk.java:238)
+	at org.h2.mvstore.MVStore.moveChunk(MVStore.java:2225)
+	at org.h2.mvstore.MVStore.compactMoveChunks(MVStore.java:2131)
+	at org.h2.mvstore.MVStore.compactMoveChunks(MVStore.java:2066)
+	at org.h2.mvstore.MVStore.compactMoveChunks(MVStore.java:2039)
+	at org.h2.mvstore.MVStore.compactFile(MVStore.java:2280)
+	at org.h2.mvstore.MVStore.closeStore(MVStore.java:1316)
+	at org.h2.mvstore.MVStore.close(MVStore.java:1279)
+	at org.h2.mvstore.db.Store.close(Store.java:354)
+	... 5 more

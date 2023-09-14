@@ -3,7 +3,7 @@ services:
   shiplogs:
     build: .
     ports:
-      - 8080:8080
+      - 2000:8080
     volumes:
       - ./data:/data
       - ./target:/target
@@ -11,4 +11,5 @@ services:
       - ./scripts:/scripts
       - ./resources:/resources
       - ./lib:/lib
+      - ./logs:/logs
     restart: always
